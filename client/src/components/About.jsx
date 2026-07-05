@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { FaInstagram, FaYoutube } from 'react-icons/fa'
 const SCXTT = '/images/SCXTT.JPG'
-const SHONN = '/images/SHONN.jpg'
-const AJ = '/images/AJ.jpg'
-const FL4IR = '/images/FL4IR.jpg'
+const SHONN = '/images/SHONN.Jpg'
+const AJ = '/images/AJ.Jpg'
+const FL4IR = '/images/FL4IR.Jpg'
 import { useState, useEffect } from 'react'
 
 const team = [
