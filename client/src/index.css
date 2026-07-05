@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #111111;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+.glow-btn {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.glow-btn:hover {
+  box-shadow: 0 0 18px rgba(244, 67, 54, 0.6);
+  transform: translateY(-2px);
+}
+
+.section-padding {
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
