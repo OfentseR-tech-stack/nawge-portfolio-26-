@@ -30,24 +30,27 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  return (
+return (
     <BrowserRouter>
     <>
       <AnimatePresence>{loading && <Loader />}</AnimatePresence>
-
       <motion.div
         className="fixed top-0 left-0 h-1 bg-action z-[70]"
         style={{ width: `${scrollPct}%` }}
       />
-
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Blog />
-        <Contact />
-        <Comments />
-      </main>
+      <Routes>
+        <Route path="/" element={
+          <main>
+            <Hero />
+            <About />
+            <Blog />
+            <Contact />
+            <Comments />
+          </main>
+        } />
+        <Route path="/privacy" element={<Privacy />} />
+      </Routes>
       <Footer />
     </>
     </BrowserRouter>
