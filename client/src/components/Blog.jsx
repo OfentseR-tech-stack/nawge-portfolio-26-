@@ -14,7 +14,7 @@ useEffect(() => {
       if (Array.isArray(res.data) && res.data.length) setVideos(res.data)
     })
     .catch(() => {})
-    axios.get('/api/videos/playlists')
+    axios.get(`${apiUrl}/api/videos/playlists`)
       .then(res => {
         if (Array.isArray(res.data)) setPlaylists(res.data)
       })
