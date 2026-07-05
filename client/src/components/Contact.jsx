@@ -1,105 +1,56 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { FaEnvelope, FaInstagram, FaYoutube } from 'react-icons/fa'
-import axios from 'axios'
+const Contact = require('../models/Contact')
+const nodemailer = require('nodemailer')
 
-export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [status, setStatus] = useState(null) // 'sending' | 'sent' | 'error'
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setStatus('sending')
-    try {
-      const apiUrl = import.meta.env.VITE_API_URL || ''
-      await axios.post(`${apiUrl}/api/contact`, form)
-      setStatus('sent')
-      setForm({ name: '', email: '', subject: '', message: '' })
-    } catch (err) {
-      setStatus('error')
-    }
-  }
-
-  return (
-    <section id="contact" className="section-padding py-28 bg-bg2">
-      <div className="grid md:grid-cols-2 gap-12">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="font-heading text-4xl mb-6">Contact</h2>
-          <p className="text-muted mb-8">Business Enquiries</p>
-
-          <div className="flex items-center gap-3 mb-4">
-            <FaEnvelope className="text-action" />
-            <span>info@nawge.co.za</span>
-          </div>
-          <div className="flex items-center gap-3 mb-4">
-            <FaInstagram className="text-action" />
-            <span>@nawgeclips</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <FaYoutube className="text-action" />
-            <span>nawgeclips</span>
-          </div>
-        </motion.div>
-
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col gap-4"
-        >
-          <input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Name"
-            required
-            className="bg-bg px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-action"
-          />
-          <input
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Email"
-            required
-            className="bg-bg px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-action"
-          />
-          <input
-            name="subject"
-            value={form.subject}
-            onChange={handleChange}
-            placeholder="Subject"
-            className="bg-bg px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-action"
-          />
-          <textarea
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Message"
-            rows={4}
-            required
-            className="bg-bg px-4 py-3 rounded-md outline-none focus:ring-1 focus:ring-action"
-          />
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            type="submit"
-            className="glow-btn bg-action px-6 py-3 rounded-md font-semibold uppercase text-sm w-fit"
-          >
-            {status === 'sending' ? 'Sending...' : 'Send'}
-          </motion.button>
-          {status === 'sent' && <p className="text-green-400 text-sm">Message sent — thank you!</p>}
-          {status === 'error' && (
-            <p className="text-red-400 text-sm">Backend not connected yet — this will work once the API is live.</p>
-          )}
-        </motion.form>
-      </div>
-    </section>
-  )
+function createTransporter() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  })
 }
+
+async function createContact(req, res, next) {
+  try {
+    const { name, email, subject, message } = req.body
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: 'name, email and message are required...' })
+    }
+
+    const contact = await Contact.create({ name, email, subject, message })
+    console.log('Contact saved:', name, email)
+
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      console.log('Attempting to send email...')
+      try {
+        const transporter = createTransporter()
+        await transporter.sendMail({
+          from: `"NAWGE Contact Form" <${process.env.EMAIL_USER}>`,
+          to: 'info@nawge.co.za',
+          replyTo: email,
+          subject: `New message from ${name}`,
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Subject:</strong> ${subject || 'N/A'}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message.replace(/\n/g, '<br/>')}</p>
+          `,
+        })
+        console.log('Email sent successfully')
+      } catch (emailErr) {
+        console.error('Email notification failed:', emailErr.message)
+      }
+    } else {
+      console.warn('EMAIL_USER or EMAIL_PASS not set - skipping email')
+    }
+
+    res.status(201).json(contact)
+  } catch (err) {
+    next(err)
+  }
+}
+
+module.exports = { createContact }
