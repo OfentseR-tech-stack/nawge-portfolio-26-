@@ -8,6 +8,8 @@ import Blog from './components/Blog'
 import Contact from './components/Contact'
 import Comments from './components/Comments'
 import Footer from './components/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Privacy from './components/Privacy'
 
 export default function App() {
   const [loading, setLoading] = useState(true)
@@ -29,6 +31,7 @@ export default function App() {
   }, [])
 
   return (
+    <BrowserRouter>
     <>
       <AnimatePresence>{loading && <Loader />}</AnimatePresence>
 
@@ -47,5 +50,6 @@ export default function App() {
       </main>
       <Footer />
     </>
+    </BrowserRouter>
   )
 }
