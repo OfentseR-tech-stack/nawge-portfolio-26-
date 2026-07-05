@@ -12,7 +12,12 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-
+app.get('/debug-env', (req, res) => {
+  res.json({
+    EMAIL_USER: process.env.EMAIL_USER ? 'SET' : 'NOT SET',
+    EMAIL_PASS: process.env.EMAIL_PASS ? 'SET' : 'NOT SET',
+  })
+})
 app.get('/', (req, res) => res.send('NAWGE API is running'))
 
 app.use('/api/videos', videoRoutes)
