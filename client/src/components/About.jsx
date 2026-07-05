@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { FaInstagram, FaYoutube } from 'react-icons/fa'
 const SCXTT = '/images/SCXTT.JPG'
-const SHONN = '/images/SHONN.Jpg'
-const AJ = '/images/AJ.Jpg'
-const FL4IR = '/images/FL4IR.Jpg'
+const SHONN = '/images/SHONN.JPG'
+const AJ = '/images/AJ.JPG'
+const FL4IR = '/images/FL4IR.JPG'
 import { useState, useEffect } from 'react'
 
 const team = [
@@ -24,9 +24,9 @@ const fadeUp = {
 
 // Slideshow images
 const slideshowImages = [
-  "/src/assets/images/AJxWillow.jpeg",
-  "/src/assets/images/WilloxFl4ir.jpeg",
-  "/src/assets/images/ScxttxAJ.jpeg",
+  "/images/AJxWillow.jpeg",
+"/images/WilloxFl4ir.jpeg",
+"/images/ScxttxAJ.jpeg",
 ]
 
 export default function About() {
