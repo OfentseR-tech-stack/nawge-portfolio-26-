@@ -49,7 +49,7 @@ export default function About() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
-          className="aspect-[4/5] bg-cover bg-center mono  rounded-md"
+          className="aspect-[4/5] bg-cover bg-center grayscale  contrast-115  rounded-md"
           style={{ backgroundImage: `url(${slideshowImages[index]})` }}
         />
 
@@ -62,7 +62,7 @@ export default function About() {
             About
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} className="font-body text-muted leading-relaxed">
-            We are a creative collective of four Artistic Directors who are dedicated to creating cinematic visual experiences that captivate and inspire audiences. Our team is passionate about pushing the boundaries of visual storytelling, and we strive to create content that is both visually stunning and emotionally impactful. With a focus on collaboration and innovation, we are committed to delivering exceptional work that exceeds expectations.
+            As a team of four Artistic Directors, we specialize in transforming ideas into cinematic visuals that spark emotion and conversation. Our projects have reached thousands of viewers across YouTube and social platforms, proving our ability to connect with diverse audiences. By combining artistry with strategy, we create content that is both visually stunning and brand‑ready, ensuring every frame leaves a lasting impression.
           </motion.p>
           <motion.p variants={fadeUp} custom={2} className="font-alt text-accent/30 mt-2 italic opacity-50">
             "Every frame tells a story."
