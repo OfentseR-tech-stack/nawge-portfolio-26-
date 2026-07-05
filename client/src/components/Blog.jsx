@@ -6,21 +6,21 @@ import axios from 'axios'
 export default function Blog() {
   const [videos, setVideos] = useState([])
   const [playlists, setPlaylists] = useState([])
-
-  useEffect(() => {
-    axios.get('/api/videos')
-      .then(res => {
-        if (Array.isArray(res.data)) setVideos(res.data)
-      })
-      .catch(() => {})
-
+useEffect(() => {
+  const apiUrl = import.meta.env.VITE_API_URL || ''
+  axios
+    .get(`${apiUrl}/api/videos`)
+    .then((res) => {
+      if (Array.isArray(res.data) && res.data.length) setVideos(res.data)
+    })
+    .catch(() => {})
     axios.get('/api/videos/playlists')
       .then(res => {
         if (Array.isArray(res.data)) setPlaylists(res.data)
       })
       .catch(() => {})
-  }, [])
-
+}, [])
+ 
   return (
     <section id="blog" className="section-padding py-28">
       {/* Latest Videos */}

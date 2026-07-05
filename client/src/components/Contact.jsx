@@ -13,7 +13,8 @@ export default function Contact() {
     e.preventDefault()
     setStatus('sending')
     try {
-      await axios.post('/api/contact', form)
+      const apiUrl = import.meta.env.VITE_API_URL || ''
+      await axios.post(`${apiUrl}/api/contact`, form)
       setStatus('sent')
       setForm({ name: '', email: '', subject: '', message: '' })
     } catch (err) {

@@ -38,7 +38,8 @@ export default function Comments() {
   const clientId = getClientId()
 
   useEffect(() => {
-    axios.get('/api/comments')
+    const apiUrl = import.meta.env.VITE_API_URL || ''
+    axios.get(`${apiUrl}/api/comments`)
       .then((res) => setComments(res.data))
       .catch(() => {})
   }, [])
@@ -48,8 +49,9 @@ export default function Comments() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
+    const apiUrl = import.meta.env.VITE_API_URL || ''
     try {
-      const res = await axios.post('/api/comment', { username, comment, ownerId: clientId })
+      const res = await axios.post(`${apiUrl}/api/comment`, { username, comment, ownerId: clientId })
       setComments([res.data, ...comments])
       setStatus('sent')
     } catch (err) {
@@ -67,7 +69,8 @@ export default function Comments() {
     if (!window.confirm('Delete this comment?')) return
     setDeletingId(id)
     try {
-      await axios.delete(`/api/comment/${id}`, { data: { ownerId: clientId } })
+      const apiUrl = import.meta.env.VITE_API_URL || ''
+      await axios.delete(`${apiUrl}/api/comment/${id}`, { data: { ownerId: clientId } })
       setComments(comments.filter((c) => c._id !== id))
     } catch (err) {
       alert('Could not delete — make sure the server is running.')
