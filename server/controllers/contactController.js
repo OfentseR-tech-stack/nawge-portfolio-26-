@@ -24,10 +24,10 @@ async function createContact(req, res, next) {
       try {
         const transporter = createTransporter()
         await transporter.sendMail({
-          from: `"NAWGE Contact Form" <${process.env.EMAIL_USER}>`,
-          to: process.env.EMAIL_USER,
-          replyTo: email,
-          subject: `New message from ${name}${subject ? ` — ${subject}` : ''}`,
+  from: `"NAWGE Contact Form" <${process.env.EMAIL_USER}>`,
+  to: 'info@nawge.co.za',  // change this line
+  replyTo: email,
+  subject: `New message from ${name}${subject ? ` — ${subject}` : ''}`,
           html: `
             <h2>New Contact Form Submission</h2>
             <p><strong>Name:</strong> ${name}</p>
