@@ -8,7 +8,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:[
-            "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('/images/hero.JPEG'),onContextMenu={(e) => e.preventDefault()},draggable={false} select='none' pointerEvents='none' userSelect='none' touchAction='none'",
+            "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('/images/hero.JPEG')",
 
           ]
         }}  
@@ -24,7 +24,7 @@ export default function Hero() {
         transition={{ duration: 1, ease: 'easeOut' }}
       >
         <h1 className="font-heading text-6xl md:text-8xl tracking-wider">
-          <img src="/IMG_2833.PNG" alt="Logo" className="h-20 w-40 rounded-full mx-auto mb-4" onContextMenu={(e) => e.preventDefault()} draggable={false} select='none' pointerEvents='none' userSelect='none' touchAction='none' />
+          <img src="/IMG_2833.PNG" alt="Logo" className="h-20 w-40 rounded-full mx-auto mb-4 touch-action-none pointer-events-none" draggable="false"  />
           {/* <img src="/IMG_3443.PNG" alt="Logo" className="h-20 w-40  mx-auto mb-4" /> */}
 
 

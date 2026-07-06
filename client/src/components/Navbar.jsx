@@ -27,12 +27,13 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 w-full z-50 section-padding flex items-center justify-between py-4 transition-all duration-300 ${
+        className={`className="select-none h-10 cursor-pointer"fixed top-0 left-0 w-full z-50 section-padding flex items-center justify-between py-4 transition-all duration-300 ${
           scrolled ? 'bg-bg/70 backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}
+      
       >
         <span className="font-heading text-2xl tracking-widest cursor-pointer" onClick={() => scrollTo('home')}>
-          <img src="/IMG_2833.PNG" alt="Logo" className="h-10 w-20 rounded-full" />
+          <img src="/IMG_2833.PNG" alt="Logo" className="h-10 w-20 rounded-full pointer-events-none touch-action-none" onContextMenu={(e) => e.preventDefault()} draggable="false" />
         </span>
 
         <div className="hidden md:flex items-center gap-10 font-body text-sm uppercase tracking-wide">
