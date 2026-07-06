@@ -10,6 +10,7 @@ import Comments from './components/Comments'
 import Footer from './components/Footer'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Privacy from './components/Privacy'
+import Terms from './components/Terms'
 
 export default function App() {
   const [loading, setLoading] = useState(true)
@@ -50,6 +51,7 @@ return (
           </main>
         } />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
       <Footer />
     </>

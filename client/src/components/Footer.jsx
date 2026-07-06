@@ -8,6 +8,7 @@ export default function Footer() {
         <a href="/privacy" className="text-muted text-xs hover:text-accent transition-colors">
   Privacy Policy
 </a>
+<a href="/terms" className="hover:text-accent transition-colors">.Terms of Use.</a>
       </p>
       <div className="flex gap-5 text-lg">
         <a href="https://www.instagram.com/nawgeclips/" target="_blank" rel="noreferrer" className="hover:text-action">
