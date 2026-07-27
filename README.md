@@ -6,7 +6,7 @@ Official website for NAWGE, a creative collective of four filmmakers, photograph
 
 ## Tech Stack
 
-- **Frontend:** React, Vite, Tailwind CSS, Framer Motion
+- **Frontend:** React, Vite, Tailwind CSS, Figma Motion
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB Atlas
 - **APIs:** YouTube Data API v3, Resend (email)
