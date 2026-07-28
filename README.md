@@ -31,16 +31,6 @@ npm run dev
 ```
 Runs at http://localhost:5000
 
-### Environment Variables
-
-Create a `.env` file in the `server` folder:
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-YOUTUBE_API_KEY=your_api_key
-YOUTUBE_CHANNEL_ID=your_channel_id
-RESEND_API_KEY=your_resend_api_key
-```
 
 ## Features
 
