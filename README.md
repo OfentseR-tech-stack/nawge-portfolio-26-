@@ -9,7 +9,6 @@ Official website for NAWGE, a creative collective of four filmmakers, photograph
 - **Frontend:** React, Vite, Tailwind CSS, Figma Motion
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB Atlas
-- **APIs:** YouTube Data API v3, Resend (email)
 - **Deployment:** Vercel (frontend), Render (backend)
 - **DNS/Email:** Cloudflare
 
