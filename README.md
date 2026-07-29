@@ -9,7 +9,6 @@ Official website for NAWGE, a creative collective of four filmmakers, photograph
 - **Frontend:** React, Vite, Tailwind CSS, Figma Motion
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB Atlas
-- **APIs:** YouTube Data API v3, Resend (email)
 - **Deployment:** Vercel (frontend), Render (backend)
 - **DNS/Email:** Cloudflare
 
@@ -31,16 +30,6 @@ npm run dev
 ```
 Runs at http://localhost:5000
 
-### Environment Variables
-
-Create a `.env` file in the `server` folder:
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-YOUTUBE_API_KEY=your_api_key
-YOUTUBE_CHANNEL_ID=your_channel_id
-RESEND_API_KEY=your_resend_api_key
-```
 
 ## Features
 
