@@ -23,12 +23,12 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: 'easeOut' }}
       >
-        <h1 className="font-heading text-6xl md:text-8xl tracking-wider">
+        <div className="font-heading text-6xl md:text-8xl tracking-wider">
           <img src="/IMG_2833.PNG" alt="Logo" className="h-20 w-40 rounded-full mx-auto mb-4 touch-action-none pointer-events-none select-none" draggable="false"  />
           {/* <img src="/IMG_3443.PNG" alt="Logo" className="h-20 w-40  mx-auto mb-4" /> */}
+          
 
-
-        </h1>
+        </div>
         <p className="font-alt text-muted mt-3 text-lg md:text-xl">CREATIVE COLLECTIVE</p>  
         <p className="font-body text-sm md:text-base mt-2 text-accent/70">
           Vlogs · Media · Photography · Storytelling · Creative Direction
