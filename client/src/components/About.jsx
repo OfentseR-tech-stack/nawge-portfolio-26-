@@ -69,7 +69,7 @@ export default function About() {
           </motion.p>
 {/* Vision Statement */}
 <br />
-          <motion.p
+          <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
@@ -77,18 +77,19 @@ export default function About() {
     <h2 className="font-heading text-2xl mb-4">Our Vision</h2>
     <p className="font-body text-muted leading-relaxed">
       Within our first month of releasing under our parent platform
-        <a href="https://youtube.com/@versatileentsa?si=QSSlnoBKNzpUdGAT" whileHover={{ scale: 1.05 }} className="text-accent glow-focus hover:underline">
+        <motion.a href="https://youtube.com/@versatileentsa?si=QSSlnoBKNzpUdGAT" whileHover={{ scale: 1.05 }} className="text-accent glow-focus hover:underline">
           @versatileENT_SA 
-        </a>,
+        </motion.a>,
        NAWGE has already been able to capture thousands of views and impressions. 
       We’re building a creative hub that blends cinematic visuals with authentic storytelling, 
-      and we’re now open to collaborating with brands and creators in various capacities as we believe that through collaboration and creativity, we can help amplify their message. 
-      <p className="font-alt text-accent/60 mt-2 italic opacity-50" font-size="1.25rem">
+      and we’re now open to collaborating with brands and creators in various capacities as we believe that through collaboration and creativity, we can help amplify their message.
+    </p> 
+      <p className="font-alt text-accent/60 mt-2 italic opacity-50" style={{ fontSize: "1.25rem" }}>
               "We believe that through our work, we can inspire, entertain, and connect with audiences on a deeper level and that our vision will continue to evolve as we grow and expand our creative endeavors."
       </p>
-    </p>
+    
    
-  </motion.p>
+  </motion.div>
   <br />
     {/* Metrics Block */}
     <motion.div
